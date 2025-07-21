@@ -193,7 +193,7 @@ html, body {
 
     @page {
         margin: 1cm;
-        size: A4;
+        size: letter;
     }
 
     table, tr, td, th {
