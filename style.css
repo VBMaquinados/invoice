@@ -179,18 +179,11 @@ html, body {
     color: #666;
 }
 
-.imagen-referencia {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
+.imagen-pequena img {
+  width: 200px;
+  height: auto;
 }
 
-.imagen-referencia img {
-    max-width: 80%;
-    height: auto;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
 
 
 /* Print Styles */
