@@ -99,7 +99,7 @@ body {
     width: 21.59cm; /* Ancho de la página Carta */
     margin: 0 auto; /* Centrar el pie de página */
     height: 70px; /* Altura del pie de página */
-    background-color: #34495e; /* Fondo gris oscuro */
+    background-color: #000000; /* Fondo gris oscuro */
     color: #ffffff; /* Letra blanca */
     text-align: center;
     padding: 10px 30px; /* Padding interno */
