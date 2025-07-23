@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #000;
+    line-height: 1.4;
+    padding: 20px;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
+
+
+.container {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: white;
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #dc2626;
+    padding-bottom: 15px;
+}
+
+.folio-fecha {
+    flex: 1;
+}
+
+.folio-fecha h3 {
+    color: #16a34a;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.folio-fecha p {
+    color: #000;
+    font-size: 12px;
+    margin-bottom: 5px;
+    border: 1px solid #16a34a;
+    padding: 5px 8px;
+    display: inline-block;
+    min-width: 150px;
+    border-radius: 4px;
+    background-color: #f0fdf4;
+    font-weight: bold;
+}
+
+.logo-section {
+    flex: 1;
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    object-fit: contain;
+    background-color: transparent; /* Sin fondo */
+}
+
+.titulo-principal {
+    text-align: center;
+    flex: 1;
+}
+
+.titulo-principal h1 {
+    color: #eb1c26;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Cliente */
+.section-info.cliente {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.section-info.cliente p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Tabla Informacion General */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-size: 13px;
+}
+
+.info-table th {
+    background-color: #16a34a;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid #15803d;
+}
+
+.info-table td {
+    padding: 10px;
+    border: 1px solid #d1fae5;
+    background-color: #ffffff;
+}
+
+/* Observaciones */
+.section-info.observaciones {
+    margin-top: 30px;
+    max-width: 80%;
+}
+
+.section-info.observaciones h3 {
+    background-color: #16a34a;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.section-info.observaciones p {
+    font-size: 12px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #15803d;
+    padding-top: 20px;
+}
+
+.firma-section {
+    text-align: center;
+    flex: 1;
+    margin: 0 20px;
+}
+
+.firma-section h4 {
+    color: #15803d;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.firma-linea {
+    border-top: 1px solid #000;
+    margin-top: 30px;
+    padding-top: 5px;
+    font-size: 10px;
+    color: #666;
+}
+
+.imagen-pequena img {
+    width: 175px;
+    height: 175px;
+}
+
+
+
+/* Print Styles */
+@media print {
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        max-width: none;
+        margin: 0;
+    }
+
+    @page {
+        margin: 1cm;
+        size: letter;
+    }
+
+    table, tr, td, th {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .folio-fecha, .titulo-principal {
+        margin-bottom: 15px;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    th, td {
+        padding: 8px 4px;
+    }
+}
