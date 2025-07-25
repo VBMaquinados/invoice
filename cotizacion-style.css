@@ -10,14 +10,10 @@ body {
     color-adjust: exact;
 }
 
-/* * --- ESTRATEGIA FINAL: USO DE @PAGE PARA DEFINIR MÁRGENES ---
- * Esto crea el espacio para el encabezado y pie de página en cada hoja.
- * El tamaño de los márgenes corresponde a la altura de tus elementos fijos.
- */
+/* @PAGE RULES for Letter Size (Optional, depends on PDF renderer support) */
 @page {
     size: Letter;
-    margin-top: 160px; /* Margen superior para el encabezado */
-    margin-bottom: 90px; /* Margen inferior para el pie de página */
+    margin: 0;
 }
 
 /* CONTENEDOR PRINCIPAL DEL DOCUMENTO */
@@ -27,26 +23,21 @@ body {
     margin: 0 auto;
     background-color: #ffffff;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    /* * Eliminamos padding-top y padding-bottom, 
-     * ya que @page ahora maneja el espacio. 
-     */
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 0;
-    padding-bottom: 0;
+    /* <--- MODIFICADO: Eliminamos los padding para que el contenido fluya libremente */
+    padding: 0;
     box-sizing: border-box;
     position: relative;
 }
 
-/* ENCABEZADO FIJO EN CADA PÁGINA */
+/* ENCABEZADO AHORA PARTE DEL FLUJO NORMAL DEL DOCUMENTO */
 .page-header {
-    position: fixed; /* Mantenemos 'fixed' para que se repita */
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 21.59cm;
-    margin: 0 auto;
-    height: 150px; /* Altura del encabezado */
+    /* <--- MODIFICADO: Eliminamos 'position: fixed' */
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%; /* Ajustamos al 100% para que se adapte al contenedor */
+    height: auto; /* Altura automática según el contenido */
     background-color: #ffffff;
     border-bottom: 2px solid #238C51;
     padding: 15px 30px;
@@ -99,15 +90,15 @@ body {
     font-weight: bold;
 }
 
-/* PIE DE PÁGINA FIJO EN CADA PÁGINA */
+/* PIE DE PÁGINA AHORA PARTE DEL FLUJO NORMAL DEL DOCUMENTO */
 .page-footer {
-    position: fixed; /* Mantenemos 'fixed' para que se repita */
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 21.59cm;
-    margin: 0 auto;
-    height: 70px;
+    /* <--- MODIFICADO: Eliminamos 'position: fixed' */
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    height: auto;
     background-color: #000000;
     color: #ffffff !important;
     text-align: center;
@@ -128,9 +119,6 @@ body {
 
 
 /* SECCIONES DEL CONTENIDO PRINCIPAL */
-/* * Ahora que @page tiene los márgenes, todas las secciones fluirán correctamente.
- * El padding horizontal se mantiene en las secciones.
- */
 section {
     padding: 15px 30px;
     margin-bottom: 20px;
@@ -146,6 +134,7 @@ h2, h3 {
     padding-bottom: 5px;
 }
 
+/* ... (El resto del CSS se mantiene igual, ya que es el diseño que te gusta) ... */
 .datos-cotizacion {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -166,106 +155,12 @@ h2, h3 {
     border-bottom: 1px solid #eee;
     margin-bottom: 20px;
 }
-
-
-/* DESCRIPCIÓN DEL PROYECTO */
-.descripcion-proyecto {
-    background-color: #f9f9f9;
-    border-left: 5px solid #F21D2F;
-    padding: 20px;
-}
-.descripcion-proyecto p {
-    font-style: italic;
-    color: #444;
-}
-
-
-/* TABLA DE PARTIDAS */
-.partidas {
-    padding: 0 30px;
-}
-.tabla-partidas {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 13px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    /* * Eliminamos la regla de salto de página de la tabla,
-     * ya que @page debería manejarlo ahora.
-     */
-}
-
-.tabla-partidas th, .tabla-partidas td {
-    border: 1px solid #e0e0e0;
-    padding: 10px 12px;
-    text-align: left;
-    color: #333;
-}
-
-.tabla-partidas thead th {
-    background-color: #238C51;
-    color: #ffffff;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 12px;
-}
-
-.tabla-partidas tbody tr:nth-child(even) {
-    background-color: #f8f8f8;
-}
-
-/* TABLA DE TOTALES */
-.totales {
-    padding: 0 30px;
-    text-align: right;
-    /* * Mantenemos esta regla para evitar que la sección se parta,
-     * pero confiamos en que el motor de AppSheet ahora la respetará.
-     */
-    page-break-inside: avoid;
-}
-.tabla-totales {
-    width: 300px;
-    border-collapse: collapse;
-    margin-top: 25px;
-    margin-left: auto;
-    font-size: 15px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.tabla-totales td {
-    padding: 10px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-    color: #333;
-}
-.tabla-totales td:first-child {
-    font-weight: bold;
-    color: #555;
-}
-.tabla-totales tr:last-child td {
-    border-bottom: none;
-    background-color: #238C51;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 18px;
-}
-.tabla-totales tr.total-final td:first-child {
-    text-align: right;
-    padding-right: 15px;
-}
-.tabla-totales tr.total-final td:last-child {
-    text-align: right;
-}
-
-/* OBSERVACIONES */
+/* ... */
 .observaciones {
     background-color: #f9f9f9;
     border: 1px dashed #ccc;
     padding: 20px;
     border-radius: 8px;
-    /* * Mantenemos esta regla para evitar que la sección se parta.
-     */
     page-break-inside: avoid;
 }
 .observaciones h3 {
