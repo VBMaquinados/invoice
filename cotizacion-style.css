@@ -1,313 +1,264 @@
 /* BASE & RESET */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f6f9;
-  -webkit-print-color-adjust: exact;
-  color-adjust: exact;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+}
+
+/* Página */
+@page {
+    size: Letter;
+    margin: 0;
 }
 
 /* CONTENEDOR PRINCIPAL */
 .cotizacion-container {
-  width: 21.59cm;
-  margin: 0 auto;
-  background-color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  padding: 0;
-  box-sizing: border-box;
-  position: relative;
-  overflow: visible;
+    width: 21.59cm;
+    min-height: 27.94cm;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding-top: 160px;
+    padding-bottom: 90px;
+    box-sizing: border-box;
+    position: relative;
 }
 
-/* PRINT LAYOUT TABLE (estructura invisible para repetición de header/footer) */
-.print-layout {
-  width: 100%;
-  border-collapse: collapse;
-}
-.print-layout thead {
-  display: table-header-group;
-}
-.print-layout tfoot {
-  display: table-footer-group;
-}
-.print-layout td {
-  padding: 0;
-  vertical-align: top;
-}
-
-/* HEADER */
-.page-header {
-  background-color: #ffffff;
-  border-bottom: 2px solid #238C51;
-  padding: 15px 30px;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr;
-  align-items: center;
-  gap: 15px;
+/* HEADER FIJO */
+.page-header {x
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 21.59cm;
+    margin: 0 auto;
+    height: 150px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #238C51;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000;
 }
 
 .page-header .empresa-info {
-  text-align: left;
+    text-align: left;
 }
 .page-header .empresa-info h1 {
-  font-size: 24px;
-  color: #238C51;
-  margin-top: 0;
-  margin-bottom: 5px;
-  font-weight: bold;
+    font-size: 24px;
+    color: #238C51;
+    margin: 0 0 5px;
+    font-weight: bold;
 }
 .page-header .empresa-info p {
-  font-size: 11px;
-  margin: 0;
-  line-height: 1.3;
-  color: #555;
+    font-size: 11px;
+    margin: 0;
+    line-height: 1.3;
+    color: #555;
 }
 
 .page-header .logo {
-  text-align: center;
+    text-align: center;
 }
 .page-header .logo img {
-  max-width: 140px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
+    max-width: 140px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .page-header .cotizacion-id-box {
-  text-align: right;
-  color: #333;
+    text-align: right;
+    color: #333;
 }
 .page-header .cotizacion-id-box p {
-  margin: 5px 0;
-  font-size: 13px;
+    margin: 5px 0;
+    font-size: 13px;
 }
 .page-header .cotizacion-id-box strong {
-  font-size: 16px;
-  color: #000;
-  font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
 }
 
-/* FOOTER */
+/* FOOTER FIJO */
 .page-footer {
-  background-color: #000000;
-  color: #ffffff !important;
-  text-align: center;
-  padding: 10px 30px;
-  box-sizing: border-box;
-  font-size: 13px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 21.59cm;
+    height: 70px;
+    background-color: #000000;
+    color: #ffffff !important;
+    text-align: center;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: bold;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .page-footer p {
-  margin: 0;
-  line-height: 1.4;
-  color: #ffffff !important;
+    margin: 0;
+    line-height: 1.4;
+    color: #ffffff !important;
 }
 
 /* SECCIONES */
 section {
-  padding: 15px 30px;
-  margin-bottom: 20px;
-  background-color: #ffffff;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
 }
 
 h2, h3 {
-  color: #238C51;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 5px;
+    color: #238C51;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
 }
 
 p {
-  line-height: 1.5;
-  color: #333;
+    line-height: 1.5;
+    color: #333;
 }
 p strong {
-  color: #000;
+    color: #000;
 }
 
-/* DATOS COTIZACIÓN */
+/* DETALLES DE COTIZACIÓN */
 .datos-cotizacion {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px 30px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fcfcfc;
-  padding: 20px;
-  margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 30px;
+    border: 1px solid #ddd;
+    border-left: 5px solid #F21D2F; /* Línea roja decorativa */
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 .datos-cotizacion p {
-  margin: 0;
-  font-size: 14px;
+    margin: 0;
+    font-size: 14px;
 }
 .datos-cotizacion h2 {
-  grid-column: 1 / -1;
-  text-align: center;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
+    grid-column: 1 / -1;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
 }
 
-/* DESCRIPCIÓN PROYECTO */
-.descripcion-proyecto {
-  background-color: #f9f9f9;
-  border-left: 5px solid #F21D2F;
-  padding: 20px;
-}
-.descripcion-proyecto p {
-  font-style: italic;
-  color: #444;
-}
-
-/* PARTIDAS */
+/* TABLA DE PARTIDAS */
 .partidas {
-  padding: 0 30px;
-  page-break-inside: avoid;
-  break-inside: avoid;
+    padding: 0 30px;
 }
 .tabla-partidas {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  font-size: 13px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  page-break-after: auto;
-  break-after: auto;
-}
-.tabla-partidas th, .tabla-partidas td {
-  border: 1px solid #e0e0e0;
-  padding: 10px 12px;
-  text-align: left;
-  color: #333;
-}
-.tabla-partidas thead th {
-  background-color: #238C51;
-  color: #ffffff;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-.tabla-partidas tbody tr:nth-child(even) {
-  background-color: #f8f8f8;
-}
-.tabla-partidas tr {
-  page-break-inside: avoid;
-  break-inside: avoid;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Fuerza columnas del mismo ancho */
+    margin-top: 20px;
+    font-size: 13px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* TOTALES */
+.tabla-partidas th, .tabla-partidas td {
+    border: 1px solid #e0e0e0;
+    padding: 10px 12px;
+    text-align: left;
+    color: #333;
+    word-wrap: break-word;
+}
+
+.tabla-partidas thead th {
+    background-color: #238C51;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.tabla-partidas tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+/* TABLA DE TOTALES */
 .totales {
-  padding: 0 30px;
-  text-align: right;
-  page-break-inside: avoid;
-  break-inside: avoid;
+    padding: 0 30px;
+    text-align: right;
+    page-break-inside: avoid;
 }
 .tabla-totales {
-  width: 300px;
-  border-collapse: collapse;
-  margin-top: 25px;
-  margin-left: auto;
-  font-size: 15px;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 300px;
+    border-collapse: collapse;
+    margin-top: 25px;
+    margin-left: auto;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+
 .tabla-totales td {
-  padding: 10px 15px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-  color: #333;
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    color: #333;
 }
 .tabla-totales td:first-child {
-  font-weight: bold;
-  color: #555;
+    font-weight: bold;
+    color: #555;
 }
 .tabla-totales tr:last-child td {
-  border-bottom: none;
-  background-color: #238C51;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 18px;
+    border-bottom: none;
+    background-color: #238C51;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
 }
 .tabla-totales tr.total-final td:first-child {
-  text-align: right;
-  padding-right: 15px;
+    text-align: right;
+    padding-right: 15px;
 }
 .tabla-totales tr.total-final td:last-child {
-  text-align: right;
+    text-align: right;
 }
 
 /* OBSERVACIONES */
 .observaciones {
-  background-color: #f9f9f9;
-  border: 1px dashed #ccc;
-  padding: 20px;
-  border-radius: 8px;
-  page-break-inside: avoid;
-  break-inside: avoid;
-  page-break-before: auto;
+    background-color: #f9f9f9;
+    border: 1px dashed #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    page-break-inside: avoid;
 }
-.observaciones h3 {
-  border-bottom: none;
-  padding-bottom: 0;
-  margin-bottom: 10px;
-  color: #F21D2F;
+.observaciones h4 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    color: #F21D2F;
 }
 .observaciones p {
-  font-size: 9px;
-  color: #444;
+    font-size: 10px;
+    color: #444;
 }
 
-/* PRINT */
+/* OCULTAR HEADER Y FOOTER HTML EN IMPRESIÓN */
 @media print {
-  body {
-    margin: 0;
-    padding: 0;
-  }
-
-  .print-layout {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .print-layout thead {
-    display: table-header-group;
-  }
-
-  .print-layout tfoot {
-    display: table-footer-group;
-  }
-
-  .print-layout td {
-    padding: 0;
-    vertical-align: top;
-  }
-
-  .page-header,
-  .page-footer {
-    padding: 20px 30px;
-    background: white;
-  }
-
-  .cotizacion-container {
-    box-shadow: none !important;
-    padding: 0 !important;
-    overflow: visible;
-  }
-
-  .partidas,
-  .totales,
-  .observaciones {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-
-  .tabla-partidas tr {
-    page-break-inside: avoid;
-  }
+    header.empresa-header,
+    footer.footer {
+        display: none;
+    }
 }
+
