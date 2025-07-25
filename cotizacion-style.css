@@ -10,35 +10,43 @@ body {
     color-adjust: exact;
 }
 
-/* @PAGE RULES for Letter Size */
+/* * --- ESTRATEGIA FINAL: USO DE @PAGE PARA DEFINIR MÁRGENES ---
+ * Esto crea el espacio para el encabezado y pie de página en cada hoja.
+ * El tamaño de los márgenes corresponde a la altura de tus elementos fijos.
+ */
 @page {
     size: Letter;
-    margin: 0;
+    margin-top: 160px; /* Margen superior para el encabezado */
+    margin-bottom: 90px; /* Margen inferior para el pie de página */
 }
 
 /* CONTENEDOR PRINCIPAL DEL DOCUMENTO */
 .cotizacion-container {
     width: 21.59cm;
+    min-height: 27.94cm;
     margin: 0 auto;
     background-color: #ffffff;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    padding-top: 160px;
-    padding-bottom: 90px;
+    /* * Eliminamos padding-top y padding-bottom, 
+     * ya que @page ahora maneja el espacio. 
+     */
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
     box-sizing: border-box;
     position: relative;
-    overflow: visible;
-    min-height: auto;
 }
 
-/* ENCABEZADO FIJO */
+/* ENCABEZADO FIJO EN CADA PÁGINA */
 .page-header {
-    position: fixed;
+    position: fixed; /* Mantenemos 'fixed' para que se repita */
     top: 0;
     left: 0;
     right: 0;
     width: 21.59cm;
     margin: 0 auto;
-    height: 150px;
+    height: 150px; /* Altura del encabezado */
     background-color: #ffffff;
     border-bottom: 2px solid #238C51;
     padding: 15px 30px;
@@ -91,9 +99,9 @@ body {
     font-weight: bold;
 }
 
-/* PIE DE PÁGINA FIJO */
+/* PIE DE PÁGINA FIJO EN CADA PÁGINA */
 .page-footer {
-    position: fixed;
+    position: fixed; /* Mantenemos 'fixed' para que se repita */
     bottom: 0;
     left: 0;
     right: 0;
@@ -118,7 +126,11 @@ body {
     color: #ffffff !important;
 }
 
+
 /* SECCIONES DEL CONTENIDO PRINCIPAL */
+/* * Ahora que @page tiene los márgenes, todas las secciones fluirán correctamente.
+ * El padding horizontal se mantiene en las secciones.
+ */
 section {
     padding: 15px 30px;
     margin-bottom: 20px;
@@ -134,15 +146,6 @@ h2, h3 {
     padding-bottom: 5px;
 }
 
-p {
-    line-height: 1.5;
-    color: #333;
-}
-p strong {
-    color: #000;
-}
-
-/* DATOS DE COTIZACIÓN */
 .datos-cotizacion {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -164,6 +167,7 @@ p strong {
     margin-bottom: 20px;
 }
 
+
 /* DESCRIPCIÓN DEL PROYECTO */
 .descripcion-proyecto {
     background-color: #f9f9f9;
@@ -175,11 +179,10 @@ p strong {
     color: #444;
 }
 
+
 /* TABLA DE PARTIDAS */
 .partidas {
     padding: 0 30px;
-    page-break-inside: avoid;
-    break-inside: avoid;
 }
 .tabla-partidas {
     width: 100%;
@@ -187,15 +190,18 @@ p strong {
     margin-top: 20px;
     font-size: 13px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    page-break-after: auto;
-    break-after: auto;
+    /* * Eliminamos la regla de salto de página de la tabla,
+     * ya que @page debería manejarlo ahora.
+     */
 }
+
 .tabla-partidas th, .tabla-partidas td {
     border: 1px solid #e0e0e0;
     padding: 10px 12px;
     text-align: left;
     color: #333;
 }
+
 .tabla-partidas thead th {
     background-color: #238C51;
     color: #ffffff;
@@ -203,20 +209,19 @@ p strong {
     text-transform: uppercase;
     font-size: 12px;
 }
+
 .tabla-partidas tbody tr:nth-child(even) {
     background-color: #f8f8f8;
-}
-.tabla-partidas tr {
-    page-break-inside: avoid;
-    break-inside: avoid;
 }
 
 /* TABLA DE TOTALES */
 .totales {
     padding: 0 30px;
     text-align: right;
+    /* * Mantenemos esta regla para evitar que la sección se parta,
+     * pero confiamos en que el motor de AppSheet ahora la respetará.
+     */
     page-break-inside: avoid;
-    break-inside: avoid;
 }
 .tabla-totales {
     width: 300px;
@@ -227,6 +232,7 @@ p strong {
     border: 1px solid #ddd;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+
 .tabla-totales td {
     padding: 10px 15px;
     text-align: left;
@@ -258,9 +264,9 @@ p strong {
     border: 1px dashed #ccc;
     padding: 20px;
     border-radius: 8px;
+    /* * Mantenemos esta regla para evitar que la sección se parta.
+     */
     page-break-inside: avoid;
-    break-inside: avoid;
-    page-break-before: auto;
 }
 .observaciones h3 {
     border-bottom: none;
@@ -273,47 +279,9 @@ p strong {
     color: #444;
 }
 
-/* PRINT STYLES */
+/* Ocultar el header y footer originales en la impresión, ya que los page-header/footer los reemplazan */
 @media print {
     header.empresa-header, footer.footer {
         display: none;
     }
-
-    .cotizacion-container {
-        box-shadow: none !important;
-        padding-top: 160px;
-        padding-bottom: 90px;
-        overflow: visible;
-        min-height: auto;
-    }
-
-    .partidas, .totales, .observaciones {
-        page-break-inside: avoid;
-        break-inside: avoid;
-    }
-
-    .tabla-partidas tr {
-        page-break-inside: avoid;
-        break-inside: avoid;
-    }
-
-    .tabla-partidas {
-        page-break-after: auto;
-        break-after: auto;
-    }
-
-    .observaciones {
-        page-break-before: auto;
-    }
-
-    .page-header, .page-footer {
-        position: fixed;
-    }
-
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: auto;
-    }
 }
-
