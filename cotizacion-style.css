@@ -1,274 +1,313 @@
-/* cotizacion-style.css */
-
 /* BASE & RESET */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f6f9; /* Fondo ligero fuera del contenedor principal */
-    -webkit-print-color-adjust: exact; /* Importante para colores en impresión */
-    color-adjust: exact; /* Estándar */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f9;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
 }
 
-/* @PAGE RULES for Letter Size (Optional, mostly for general page size now) */
-@page {
-    size: Letter; /* Tamaño carta */
-    margin: 0; /* Reinicia los márgenes predeterminados de la página */
-}
-
-/* CONTENEDOR PRINCIPAL DEL DOCUMENTO */
+/* CONTENEDOR PRINCIPAL */
 .cotizacion-container {
-    width: 21.59cm; /* Ancho de una página Carta (8.5 pulgadas) */
-    /* min-height ya no es tan crítico aquí, el contenido fluirá */
-    margin: 0 auto; /* Centra el documento en la página */
-    background-color: #ffffff; /* Fondo principal blanco */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave para un mejor aspecto */
-    padding: 0; /* Eliminamos el padding aquí para un flujo normal */
-    box-sizing: border-box; /* Padding incluido en el ancho/alto */
-    position: relative; /* Para que las secciones internas se posicionen correctamente si usan absolute */
+  width: 21.59cm;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  overflow: visible;
 }
 
-/* ENCABEZADO: Ahora es una sección regular al inicio del documento */
+/* PRINT LAYOUT TABLE (estructura invisible para repetición de header/footer) */
+.print-layout {
+  width: 100%;
+  border-collapse: collapse;
+}
+.print-layout thead {
+  display: table-header-group;
+}
+.print-layout tfoot {
+  display: table-footer-group;
+}
+.print-layout td {
+  padding: 0;
+  vertical-align: top;
+}
+
+/* HEADER */
 .page-header {
-    /* <--- MODIFICADO: Eliminamos 'position: fixed' y propiedades relacionadas */
-    position: static;
-    width: 100%; /* Ocupa el 100% del ancho del .cotizacion-container */
-    height: auto; /* La altura se ajusta al contenido */
-    background-color: #ffffff;
-    border-bottom: 2px solid #238C51; /* Línea verde debajo del encabezado */
-    padding: 15px 30px; /* Padding interno */
-    box-sizing: border-box;
-    display: grid; /* Mantenemos el grid para el diseño interno del encabezado */
-    grid-template-columns: 2fr 1fr 1.5fr; /* Info Empresa | Logo | ID/Fecha */
-    align-items: center; /* Alineación vertical de los elementos */
-    gap: 15px; /* Espacio entre las columnas */
-    /* z-index ya no es necesario */
+  background-color: #ffffff;
+  border-bottom: 2px solid #238C51;
+  padding: 15px 30px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  align-items: center;
+  gap: 15px;
 }
 
 .page-header .empresa-info {
-    text-align: left;
+  text-align: left;
 }
 .page-header .empresa-info h1 {
-    font-size: 24px;
-    color: #238C51; /* Verde */
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-weight: bold;
+  font-size: 24px;
+  color: #238C51;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 .page-header .empresa-info p {
-    font-size: 11px;
-    margin: 0;
-    line-height: 1.3;
-    color: #555; /* Gris oscuro */
+  font-size: 11px;
+  margin: 0;
+  line-height: 1.3;
+  color: #555;
 }
 
 .page-header .logo {
-    text-align: center; /* Centra el logo en su columna */
+  text-align: center;
 }
 .page-header .logo img {
-    max-width: 140px; /* Tamaño del logo */
-    height: auto;
-    display: block; /* Para centrar con margin auto si es necesario */
-    margin: 0 auto;
+  max-width: 140px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .page-header .cotizacion-id-box {
-    text-align: right;
-    color: #333; /* Color de texto general */
+  text-align: right;
+  color: #333;
 }
 .page-header .cotizacion-id-box p {
-    margin: 5px 0;
-    font-size: 13px;
+  margin: 5px 0;
+  font-size: 13px;
 }
 .page-header .cotizacion-id-box strong {
-    font-size: 16px;
-    color: #000; /* Negro para los IDs importantes */
-    font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  font-weight: bold;
 }
 
-/* PIE DE PÁGINA: Ahora es una sección regular al final del documento */
+/* FOOTER */
 .page-footer {
-    /* <--- MODIFICADO: Eliminamos 'position: fixed' y propiedades relacionadas */
-    position: static;
-    width: 100%; /* Ocupa el 100% del ancho del .cotizacion-container */
-    height: auto; /* La altura se ajusta al contenido */
-    background-color: #000000; /* Fondo negro */
-    color: #ffffff !important; /* Letra blanca */
-    text-align: center;
-    padding: 10px 30px; /* Padding interno */
-    box-sizing: border-box;
-    font-size: 13px;
-    font-weight: bold;
-    /* z-index ya no es necesario */
-    display: flex; /* Para centrar contenido */
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px; /* Espacio antes del footer para separarlo del contenido */
+  background-color: #000000;
+  color: #ffffff !important;
+  text-align: center;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .page-footer p {
-    margin: 0;
-    line-height: 1.4;
-    color: #ffffff !important;
+  margin: 0;
+  line-height: 1.4;
+  color: #ffffff !important;
 }
 
-
-/* SECCIONES DEL CONTENIDO PRINCIPAL */
-/* Estas secciones ahora deben tener su propio padding para el contenido */
+/* SECCIONES */
 section {
-    padding: 15px 30px; /* Padding uniforme para todas las secciones */
-    margin-bottom: 20px;
-    background-color: #ffffff; /* Asegura fondo blanco para cada sección */
+  padding: 15px 30px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
 }
 
 h2, h3 {
-    color: #238C51; /* Verde para títulos de sección */
-    font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee; /* Línea sutil bajo los títulos */
-    padding-bottom: 5px;
+  color: #238C51;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
 }
 
-/* Estilos de Párrafos Generales */
 p {
-    line-height: 1.5;
-    color: #333; /* Texto principal en gris oscuro */
+  line-height: 1.5;
+  color: #333;
 }
 p strong {
-    color: #000; /* Negritas en negro para énfasis */
+  color: #000;
 }
 
-/* SECCIÓN DE DATOS DE COTIZACIÓN */
+/* DATOS COTIZACIÓN */
 .datos-cotizacion {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
-    gap: 15px 30px; /* Espacio entre filas y columnas */
-
-    border: 1px solid #ddd; /* Borde suave */
-    border-radius: 8px; /* Bordes redondeados */
-    background-color: #fcfcfc; /* Un blanco muy ligero para distinguirlo */
-    padding: 20px;
-    margin-bottom: 30px; /* Más espacio debajo */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fcfcfc;
+  padding: 20px;
+  margin-bottom: 30px;
 }
 .datos-cotizacion p {
-    margin: 0;
-    font-size: 14px;
+  margin: 0;
+  font-size: 14px;
 }
 .datos-cotizacion h2 {
-    grid-column: 1 / -1; /* El título ocupa ambas columnas */
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
+  grid-column: 1 / -1;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
 }
 
-
-/* DESCRIPCIÓN DEL PROYECTO */
+/* DESCRIPCIÓN PROYECTO */
 .descripcion-proyecto {
-    background-color: #f9f9f9; /* Fondo un poco más oscuro */
-    border-left: 5px solid #F21D2F; /* Borde rojo a la izquierda para destacar */
-    padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 5px solid #F21D2F;
+  padding: 20px;
 }
 .descripcion-proyecto p {
-    font-style: italic;
-    color: #444;
+  font-style: italic;
+  color: #444;
 }
 
-
-/* TABLA DE PARTIDAS */
+/* PARTIDAS */
 .partidas {
-    padding: 0 30px; /* Padding horizontal para la sección de partidas */
+  padding: 0 30px;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 .tabla-partidas {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 13px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra suave para la tabla */
-    /* Eliminamos page-break-after aquí, ya no es necesario forzarlo. */
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 13px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  page-break-after: auto;
+  break-after: auto;
 }
-
 .tabla-partidas th, .tabla-partidas td {
-    border: 1px solid #e0e0e0; /* Bordes de celda más suaves */
-    padding: 10px 12px;
-    text-align: left;
-    color: #333;
+  border: 1px solid #e0e0e0;
+  padding: 10px 12px;
+  text-align: left;
+  color: #333;
 }
-
 .tabla-partidas thead th {
-    background-color: #238C51; /* Fondo verde para encabezados de tabla */
-    color: #ffffff; /* Letra blanca en encabezados */
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 12px;
+  background-color: #238C51;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
 }
-
 .tabla-partidas tbody tr:nth-child(even) {
-    background-color: #f8f8f8; /* Raya suave para filas pares */
+  background-color: #f8f8f8;
+}
+.tabla-partidas tr {
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
-/* TABLA DE TOTALES */
+/* TOTALES */
 .totales {
-    padding: 0 30px; /* Padding horizontal */
-    text-align: right; /* Alinea la tabla de totales a la derecha */
-    page-break-inside: avoid; /* Mantenemos para evitar que se parta si es posible */
+  padding: 0 30px;
+  text-align: right;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 .tabla-totales {
-    width: 300px; /* Ancho fijo para la tabla de totales */
-    border-collapse: collapse;
-    margin-top: 25px;
-    margin-left: auto; /* Alinea la tabla a la derecha */
-    font-size: 15px;
-    border: 1px solid #ddd; /* Borde exterior para la tabla de totales */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  width: 300px;
+  border-collapse: collapse;
+  margin-top: 25px;
+  margin-left: auto;
+  font-size: 15px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-
 .tabla-totales td {
-    padding: 10px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee; /* Solo líneas horizontales sutiles */
-    color: #333;
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  color: #333;
 }
 .tabla-totales td:first-child {
-    font-weight: bold;
-    color: #555;
+  font-weight: bold;
+  color: #555;
 }
 .tabla-totales tr:last-child td {
-    border-bottom: none;
-    background-color: #238C51;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 18px;
+  border-bottom: none;
+  background-color: #238C51;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
 }
 .tabla-totales tr.total-final td:first-child {
-    text-align: right;
-    padding-right: 15px;
+  text-align: right;
+  padding-right: 15px;
 }
 .tabla-totales tr.total-final td:last-child {
-    text-align: right;
+  text-align: right;
 }
 
 /* OBSERVACIONES */
 .observaciones {
-    background-color: #f9f9f9;
-    border: 1px dashed #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    page-break-inside: avoid; /* Mantenemos para evitar que se parta si es posible */
+  background-color: #f9f9f9;
+  border: 1px dashed #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  page-break-before: auto;
 }
 .observaciones h3 {
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 10px;
-    color: #F21D2F;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  color: #F21D2F;
 }
 .observaciones p {
-    font-size: 10px;
-    color: #444;
+  font-size: 14px;
+  color: #444;
 }
 
-/* Ocultar el header y footer originales en la impresión, ya que los page-header/footer los reemplazan */
+/* PRINT */
 @media print {
-    header.empresa-header, footer.footer {
-        display: none;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-layout {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .print-layout thead {
+    display: table-header-group;
+  }
+
+  .print-layout tfoot {
+    display: table-footer-group;
+  }
+
+  .print-layout td {
+    padding: 0;
+    vertical-align: top;
+  }
+
+  .page-header,
+  .page-footer {
+    padding: 20px 30px;
+    background: white;
+  }
+
+  .cotizacion-container {
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible;
+  }
+
+  .partidas,
+  .totales,
+  .observaciones {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .tabla-partidas tr {
+    page-break-inside: avoid;
+  }
 }
