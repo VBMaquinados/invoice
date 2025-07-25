@@ -5,48 +5,49 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f6f9; /* Fondo ligero fuera del contenedor principal */
-    -webkit-print-color-adjust: exact; /* Importante para colores en impresión */
-    color-adjust: exact; /* Estándar */
+    background-color: #f4f6f9;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
 }
 
-/* @PAGE RULES for Letter Size (Optional, depends on PDF renderer support) */
+/* @PAGE RULES for Letter Size */
 @page {
-    size: Letter; /* Tamaño carta */
-    margin: 0; /* Reinicia los márgenes predeterminados de la página */
+    size: Letter;
+    margin: 0;
 }
 
 /* CONTENEDOR PRINCIPAL DEL DOCUMENTO */
 .cotizacion-container {
-    width: 21.59cm; /* Ancho de una página Carta (8.5 pulgadas) */
-    min-height: 27.94cm; /* Altura de una página Carta (11 pulgadas) */
-    margin: 0 auto; /* Centra el documento en la página */
-    background-color: #ffffff; /* Fondo principal blanco */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave para un mejor aspecto */
-    padding-top: 160px; /* Espacio para el encabezado fijo */
-    padding-bottom: 90px; /* Espacio para el pie de página fijo */
-    box-sizing: border-box; /* Padding incluido en el ancho/alto */
-    position: relative; /* Para que las secciones internas se posicionen correctamente si usan absolute */
+    width: 21.59cm;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding-top: 160px;
+    padding-bottom: 90px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: visible;
+    min-height: auto;
 }
 
-/* ENCABEZADO FIJO EN CADA PÁGINA (PRINT) */
+/* ENCABEZADO FIJO */
 .page-header {
-    position: fixed; /* Clave para repetir en cada página de impresión/PDF */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    width: 21.59cm; /* Ancho de la página Carta */
-    margin: 0 auto; /* Centrar el encabezado si el body no tiene ancho definido */
-    height: 150px; /* Altura del encabezado, ajusta según contenido */
-    background-color: #ffffff; /* Fondo blanco */
-    border-bottom: 2px solid #238C51; /* Línea verde debajo del encabezado */
-    padding: 15px 30px; /* Padding interno */
+    width: 21.59cm;
+    margin: 0 auto;
+    height: 150px;
+    background-color: #ffffff;
+    border-bottom: 2px solid #238C51;
+    padding: 15px 30px;
     box-sizing: border-box;
-    display: grid; /* Usamos Grid para un control preciso de 3 columnas */
-    grid-template-columns: 2fr 1fr 1.5fr; /* Info Empresa | Logo | ID/Fecha */
-    align-items: center; /* Alineación vertical de los elementos */
-    gap: 15px; /* Espacio entre las columnas */
-    z-index: 1000; /* Asegura que esté por encima del contenido */
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000;
 }
 
 .page-header .empresa-info {
@@ -54,7 +55,7 @@ body {
 }
 .page-header .empresa-info h1 {
     font-size: 24px;
-    color: #238C51; /* Verde */
+    color: #238C51;
     margin-top: 0;
     margin-bottom: 5px;
     font-weight: bold;
@@ -63,22 +64,22 @@ body {
     font-size: 11px;
     margin: 0;
     line-height: 1.3;
-    color: #555; /* Gris oscuro */
+    color: #555;
 }
 
 .page-header .logo {
-    text-align: center; /* Centra el logo en su columna */
+    text-align: center;
 }
 .page-header .logo img {
-    max-width: 140px; /* Tamaño del logo */
+    max-width: 140px;
     height: auto;
-    display: block; /* Para centrar con margin auto si es necesario */
+    display: block;
     margin: 0 auto;
 }
 
 .page-header .cotizacion-id-box {
     text-align: right;
-    color: #333; /* Color de texto general */
+    color: #333;
 }
 .page-header .cotizacion-id-box p {
     margin: 5px 0;
@@ -86,20 +87,20 @@ body {
 }
 .page-header .cotizacion-id-box strong {
     font-size: 16px;
-    color: #000; /* Negro para los IDs importantes */
+    color: #000;
     font-weight: bold;
 }
 
-/* PIE DE PÁGINA FIJO EN CADA PÁGINA (PRINT) */
+/* PIE DE PÁGINA FIJO */
 .page-footer {
-    position: fixed; /* Clave para repetir en cada página de impresión/PDF */
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 21.59cm; /* Ancho de la página Carta */
+    width: 21.59cm;
     margin: 0 auto;
     height: 70px;
-    background-color: #000000; /* Fondo negro */
+    background-color: #000000;
     color: #ffffff !important;
     text-align: center;
     padding: 10px 30px;
@@ -117,7 +118,6 @@ body {
     color: #ffffff !important;
 }
 
-
 /* SECCIONES DEL CONTENIDO PRINCIPAL */
 section {
     padding: 15px 30px;
@@ -134,7 +134,6 @@ h2, h3 {
     padding-bottom: 5px;
 }
 
-/* Estilos de Párrafos Generales */
 p {
     line-height: 1.5;
     color: #333;
@@ -143,7 +142,7 @@ p strong {
     color: #000;
 }
 
-/* SECCIÓN DE DATOS DE COTIZACIÓN */
+/* DATOS DE COTIZACIÓN */
 .datos-cotizacion {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -165,7 +164,6 @@ p strong {
     margin-bottom: 20px;
 }
 
-
 /* DESCRIPCIÓN DEL PROYECTO */
 .descripcion-proyecto {
     background-color: #f9f9f9;
@@ -177,10 +175,11 @@ p strong {
     color: #444;
 }
 
-
 /* TABLA DE PARTIDAS */
 .partidas {
     padding: 0 30px;
+    page-break-inside: avoid;
+    break-inside: avoid;
 }
 .tabla-partidas {
     width: 100%;
@@ -188,15 +187,15 @@ p strong {
     margin-top: 20px;
     font-size: 13px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    page-break-after: auto;
+    break-after: auto;
 }
-
 .tabla-partidas th, .tabla-partidas td {
     border: 1px solid #e0e0e0;
     padding: 10px 12px;
     text-align: left;
     color: #333;
 }
-
 .tabla-partidas thead th {
     background-color: #238C51;
     color: #ffffff;
@@ -204,17 +203,20 @@ p strong {
     text-transform: uppercase;
     font-size: 12px;
 }
-
 .tabla-partidas tbody tr:nth-child(even) {
     background-color: #f8f8f8;
+}
+.tabla-partidas tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
 }
 
 /* TABLA DE TOTALES */
 .totales {
     padding: 0 30px;
     text-align: right;
-    /* <--- **MODIFICADO:** Evita que esta sección se rompa a través de un salto de página */
     page-break-inside: avoid;
+    break-inside: avoid;
 }
 .tabla-totales {
     width: 300px;
@@ -225,7 +227,6 @@ p strong {
     border: 1px solid #ddd;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-
 .tabla-totales td {
     padding: 10px 15px;
     text-align: left;
@@ -257,8 +258,9 @@ p strong {
     border: 1px dashed #ccc;
     padding: 20px;
     border-radius: 8px;
-    /* <--- **MODIFICADO:** Evita que esta sección se rompa a través de un salto de página */
     page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-before: auto;
 }
 .observaciones h3 {
     border-bottom: none;
@@ -271,9 +273,47 @@ p strong {
     color: #444;
 }
 
-/* Ocultar el header y footer originales en la impresión, ya que los page-header/footer los reemplazan */
+/* PRINT STYLES */
 @media print {
     header.empresa-header, footer.footer {
         display: none;
     }
+
+    .cotizacion-container {
+        box-shadow: none !important;
+        padding-top: 160px;
+        padding-bottom: 90px;
+        overflow: visible;
+        min-height: auto;
+    }
+
+    .partidas, .totales, .observaciones {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .tabla-partidas tr {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .tabla-partidas {
+        page-break-after: auto;
+        break-after: auto;
+    }
+
+    .observaciones {
+        page-break-before: auto;
+    }
+
+    .page-header, .page-footer {
+        position: fixed;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: auto;
+    }
 }
+
